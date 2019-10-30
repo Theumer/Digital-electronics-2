@@ -2,6 +2,9 @@
 #define  GPIO_H_INCLUDED34
 #define  DDR(x) (*(&x - 1))
 
+#define PIN_LOW 0
+#define PIN_HIGH 1
+
 #include  <avr/io.h>
 
 void  GPIO_config_output(volatile  uint8_t *reg_name, uint8_t  pin_num);
