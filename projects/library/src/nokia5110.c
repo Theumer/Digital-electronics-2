@@ -193,7 +193,7 @@ void nokia_lcd_set_cursor(uint8_t x, uint8_t y)
 void nokia_lcd_render(void)
 {
 	register unsigned i;
-	/* Set column and row to 0 */
+	 /* Set column and row to 0 */
 	write_cmd(0x80);
 	write_cmd(0x40);
 

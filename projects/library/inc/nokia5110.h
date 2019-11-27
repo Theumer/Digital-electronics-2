@@ -80,7 +80,7 @@ void nokia_lcd_write_string(const char *str, uint8_t scale);
  */
 void nokia_lcd_set_cursor(uint8_t x, uint8_t y);
 
-/*
+ /*
  * Render screen to display
  */
 void nokia_lcd_render(void);

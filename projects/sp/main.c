@@ -21,7 +21,7 @@
 
 /* Define ------------------------------------------------------------*/
 /*
-#define pin_CE      PD3
+
 #define pin_DC      PB2
 #define pin_RST     PD4
 
