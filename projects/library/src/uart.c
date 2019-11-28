@@ -477,7 +477,7 @@ void uart_init(unsigned int baudrate)
 
     /* Set frame format: asynchronous, 8data, no parity, 1stop bit */
     #ifdef UART0_CONTROLC
-    # ifdef UART0_BIT_URSEL
+    #ifdef UART0_BIT_URSEL
     UART0_CONTROLC = (1 << UART0_BIT_URSEL) | (1 << UART0_BIT_UCSZ1) | (1 << UART0_BIT_UCSZ0);
     # else
     UART0_CONTROLC = (1 << UART0_BIT_UCSZ1) | (1 << UART0_BIT_UCSZ0);
