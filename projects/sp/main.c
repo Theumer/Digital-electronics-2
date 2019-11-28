@@ -24,14 +24,7 @@
 
 #define pin_DC      PB2
 #define pin_RST     PD4
-
-#define SPIE        7       // SPIE bit: interrupt enable
-#define SPE         6       // SPI communication enable
-#define MSTR        4       // set ATmega328P as master
-#define SPR0        0       // set frequency
-#define MOSI        PB3     // data input (Master output-Slave input)
-#define SCK         PB5 */
-
+*/
 /* Variables ---------------------------------------------------------
 state_t current_state = IDLE_STATE;
 uint8_t temp;
@@ -53,13 +46,12 @@ int main(void)
     // INIT LCD NOKIA5110
     nokia_lcd_init();
     nokia_lcd_clear();
-    nokia_lcd_write_string("Horse", 2);
+    nokia_lcd_write_string("Init OK", 2);
     nokia_lcd_render();
 
-    // Infinite loop
+    // infinite loop
     for (;;) {
     }
     
-    // Will never reach this
     return (0);
 }
