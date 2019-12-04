@@ -27,6 +27,9 @@ state_t current_state = IDLE_STATE;
 uint8_t temp;
 uint8_t time_sec;
 uint8_t time_min;*/
+uint8_t data[65] = {0};
+uint8_t receive;
+uint8_t rec_flag;
 
 /* Function prototypes -----------------------------------------------*/
 /* void fsm_twi_scanner(void);*/
@@ -48,12 +51,34 @@ int main(void)
 
     uart_init(UART_BAUD_SELECT(UART_BAUD_RATE, F_CPU));
 
-    TIM_config_prescaler(TIM1, TIM_PRESC_8);
+    TIM_config_prescaler(TIM1, TIM_PRESC_256);
     TIM_config_interrupt(TIM1, TIM_OVERFLOW_ENABLE);
+
+    // INIT OF UART COMMUNICATION
+    uart_init(UART_BAUD_SELECT(UART_BAUD_RATE, F_CPU));
+    uart1_init(UART_BAUD_SELECT(UART_BAUD_RATE, F_CPU));
+    uart_puts("\r\n---TEST UART---");
 
     sei();
 
-    uart_puts("\r\n---TEST UART---");
+    uint8_t i = 0;
+    char uart_string[8];
+
+    if((0x0048 == 1)&(i<65))
+    {
+        rec_flag = 0;
+        data[i] = receive;
+        itoa(data[i], uart_string, 10);
+        uart_puts(uart_string);
+        i++;
+
+        /*for(i=0; i<65; i++)
+        {
+            data[i] = uart1_getc();
+            itoa(data[i], uart_string, 10);
+            uart_puts(uart_string);
+        }*/
+    }
 
 
     // infinite loop
@@ -63,7 +88,8 @@ int main(void)
     return (0);
 }
 
-ISR(TIMER1_OVF_vect)
+ISR(USART_RXC_vect)
 {
-    uart_getc();
+    receive = uart1_getc();
+    rec_flag = 1;
 }

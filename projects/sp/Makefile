@@ -8,7 +8,55 @@
 #
 
 SHELL = /bin/sh
-include ../projects.in
+# include ../projects.in
+
+# ***********************************************************************************************************************************
+
+#
+# A common settings for all projects in this folder
+#
+
+TARGET    = DEMO
+MCU       = atmega2560
+MCU_DUDE  = m2560
+F_CPU     = 16000000
+USBPORT   = /dev/ttyACM0
+
+## AVR 8-bit toolchain
+# https://www.microchip.com/mplab/avr-support/avr-and-arm-toolchains-c-compilers
+PREFIX = /opt/avr8-gnu-toolchain-linux_x86_64
+
+
+
+##
+## You should not have to change anything below here
+##
+
+# Define variables used as names of programs in built-in rules
+export LC_ALL=C
+BINDIR  = $(PREFIX)/bin
+CC      = $(BINDIR)/avr-gcc -fdiagnostics-color=always
+AS      = $(BINDIR)/avr-gcc -fdiagnostics-color=always -x assembler-with-cpp
+OBJDUMP = $(BINDIR)/avr-objdump
+OBJCOPY = $(BINDIR)/avr-objcopy
+SIZE    = $(BINDIR)/avr-size
+AVRDUDE = avrdude
+RM      = rm -f
+RMFILES = *.o *.hex *.map *.elf *.lss
+
+# Extra flags to give to the C compiler
+# https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html
+CFLAGS  = -std=c99 -Wall -Wextra -Werror -g -Os -mmcu=$(MCU) -DF_CPU=$(F_CPU)UL -I. -I$(LIBRARY_DIR)/inc
+# Extra flags to give to the assembler
+ASFLAGS  = -mmcu=$(MCU) -Wall -I$(LIBRARY_DIR)/inc
+# Extra flags to give to compilers when they are supposed to invoke the linker
+LDFLAGS = -mmcu=$(MCU) -Wl,-Map=$(TARGET).map -Wl,--cref
+
+# We define all the targets that are not files
+.PHONY = all list size flash clean
+
+
+# ***********************************************************************************************************************************
 
 LIBRARY_DIR = ../library
 
@@ -90,7 +138,7 @@ size : $(TARGET).elf
 # https://www.nongnu.org/avrdude/user-manual/avrdude_4.html
 flash : $(TARGET).hex
 	@echo "Flashing program memory\t$<"
-	@$(AVRDUDE) -p $(MCU_DUDE) -c arduino -D -V -u -q -U flash:w:$(TARGET).hex:i -P $(USBPORT)
+	@$(AVRDUDE) -p $(MCU_DUDE) -c wiring -D -V -u -q -U flash:w:$(TARGET).hex:i -P $(USBPORT)
 
 ## Clean rule
 clean :
