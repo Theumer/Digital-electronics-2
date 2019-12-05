@@ -6,22 +6,36 @@
 1. [Introduction](#introduction)
 2. [Hardware](#hardware)
 3. [Software](#software)
-4. [References](#references)
+4. [Commits] (#commits)
+5. [References](#references)
 
 
 ## Introduction
 
-TBD
+Semestral project in BPC-DE2: Communication with GPS module
+Authors:    Radek Theumer
+            Jindrich Zabka
+            Jonas Hubacek
 
 
 ## Hardware
 
-TBD
+AVR ATmega2560, 8-bit controller
+PA6H GPS module
+Nokia5110 LCD display
 
 
 ## Software
 
 TBD
+
+
+## Commits
+
+[LCD]   ... programming LCD disp.
+[USART] ... programming USART communication
+[GPS]   ... reading GPS data from PA6H
+[TEST]  ... test application outside
 
 
 ## References
