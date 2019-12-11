@@ -6,7 +6,7 @@
 1. [Introduction](#introduction)
 2. [Hardware](#hardware)
 3. [Software](#software)
-4. [Commits] (#commits)
+4. [Commits](#commits)
 5. [References](#references)
 
 
@@ -15,9 +15,9 @@
 ***Semestral project in BPC-DE2: Communication with GPS module***  
   
 Authors:  
-- Radek Theumer  
-- Jindrich Zabka  
-- Jonas Hubacek
+ - Radek Theumer  
+ - Jindrich Zabka  
+ - Jonas Hubacek
 
 
 ## Hardware
@@ -25,6 +25,8 @@ Authors:
 - AVR ATmega2560, 8-bit controller
 - PA6H GPS module
 - Nokia5110 LCD display
+
+> We use ATmega2560 kit, because this controller provides four USARTs. To communication with PC we use USART0 (connect with USB port usbACK0) and to receive data from GPS we use USART1.
 
 
 ## Software
