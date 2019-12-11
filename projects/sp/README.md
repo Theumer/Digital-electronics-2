@@ -1,5 +1,5 @@
 
-# Demo Project
+# SEMESTRAL PROJECT
 
 #### Table of Contents
 
@@ -20,9 +20,9 @@ Authors:    Radek Theumer
 
 ## Hardware
 
-AVR ATmega2560, 8-bit controller
-PA6H GPS module
-Nokia5110 LCD display
+-AVR ATmega2560, 8-bit controller
+-PA6H GPS module
+-Nokia5110 LCD display
 
 
 ## Software
@@ -36,6 +36,7 @@ TBD
 [USART] ... programming USART communication
 [GPS]   ... reading GPS data from PA6H
 [TEST]  ... test application outside
+[.MD]   ... edit of .md file
 
 
 ## References
