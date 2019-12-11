@@ -14,7 +14,7 @@
  */
 
  /* EXAMPLES OF 5 NMEA SENTENCES:
- * $GPGGA,172814.0,3723.46587704,N,12202.26957864,W,2,6,1.2,18.893,M,-25.669,M,2.0,0031*4F
+ *
  * 
  */ 
 
@@ -51,8 +51,7 @@ volatile uint8_t identifier[6] = {0};
 
 /* Functions ---------------------------------------------------------*/
 /**
- *  Brief:  Main program. Test all TWI slave addresses and scan 
- *          connected devices.
+ *  Brief:  Main program.
  *  Input:  None
  *  Return: None
  */
@@ -92,8 +91,9 @@ int main(void)
     // global enable of interrupt
     sei();
 
-
     uint8_t i = 0;
+    uint8_t state = 0;
+    uint8_t receive;
     //char uart_string[4];
 
     // LOOP FOR CHECKING SET OF RXC1 BIT
@@ -101,15 +101,23 @@ int main(void)
         // doing, while UDR1 receive reg is full (set RXC1 flag)
         while (!(UCSR1A & (1<<RXC1)))
         {
-            data[i] = uart1_getc();
-            if(data[i] != 36)               // if char is not '$' - find a start of packet
+            receive = uart1_getc();
+            uart_putc(receive);
+            if(receive == 36)
             {
                 i = 0;
-                break;
+                state++;
             }
-            identifier[i] = data[i];
-            uart_putc(data[i]);
-            i++;
+
+            switch(state)
+            {
+                case 1: GGA[i] = receive; i++; break;
+                case 2: GSA[i] = receive; i++; break;
+                case 3: GSV[i] = receive; i++; break;
+                case 4: RMC[i] = receive; i++; break;
+                case 5: VTG[i] = receive; i++; break;
+                default: break;
+            }
         }
     }
 
@@ -122,6 +130,9 @@ int main(void)
 
 /* INTERRUPT VECTOR FOR REFRESH OF DISPLAY */
 ISR(TIMER1_OVF_vect){
+    //uint8_t value = GGA[0];
+    //char uart_string[4];
+
     nokia_lcd_clear();
     nokia_lcd_write_string("SPEED", 2);
 
@@ -131,7 +142,8 @@ ISR(TIMER1_OVF_vect){
     nokia_lcd_set_cursor(0, 30);
     nokia_lcd_write_string("longitude", 1);
 
+    //itoa(value, uart_string, 10);
     nokia_lcd_set_cursor(0, 40);
-    nokia_lcd_write_string("hh:mm:ss", 1);
+    nokia_lcd_write_char(GGA[0], 1);
     nokia_lcd_render();
 }
