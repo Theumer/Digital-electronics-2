@@ -12,9 +12,9 @@
 
 ## Introduction
 
-Semestral project in BPC-DE2: Communication with GPS module
-Authors:    Radek Theumer
-            Jindrich Zabka
+Semestral project in BPC-DE2: Communication with GPS module  
+Authors:    Radek Theumer  
+            Jindrich Zabka  
             Jonas Hubacek
 
 
