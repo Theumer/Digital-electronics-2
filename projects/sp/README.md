@@ -12,10 +12,12 @@
 
 ## Introduction
 
-Semestral project in BPC-DE2: Communication with GPS module  
-Authors:    - Radek Theumer  
-            - Jindrich Zabka  
-            - Jonas Hubacek
+***Semestral project in BPC-DE2: Communication with GPS module***  
+  
+Authors:  
+- Radek Theumer  
+- Jindrich Zabka  
+- Jonas Hubacek
 
 
 ## Hardware
@@ -32,11 +34,11 @@ TBD
 
 ## Commits
 
-[LCD]   ... programming LCD disp.
-[USART] ... programming USART communication
-[GPS]   ... reading GPS data from PA6H
-[TEST]  ... test application outside
-[.MD]   ... edit of .md file
+[LCD]   ... programming LCD disp.  
+[USART] ... programming USART communication  
+[GPS]   ... reading GPS data from PA6H  
+[TEST]  ... test application outside  
+[.MD]   ... edit of .md file  
 
 
 ## References
