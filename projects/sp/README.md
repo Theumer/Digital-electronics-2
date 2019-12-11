@@ -34,7 +34,7 @@ Authors:
 Creating application:  
 - [x] LCD Nokia5110 running (28th Nov)  
 - [x] USAT0 and USART1 communication with GPS module and PC running (5th Dec)  
-- [ ] assignment receive data into arrays  
+- [x] assignment receive data into arrays (11th Dec)
 - [ ] test of GPS outside
 
 
