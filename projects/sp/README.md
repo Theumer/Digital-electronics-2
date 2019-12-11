@@ -20,9 +20,9 @@ Authors:    Radek Theumer
 
 ## Hardware
 
--AVR ATmega2560, 8-bit controller
--PA6H GPS module
--Nokia5110 LCD display
+- AVR ATmega2560, 8-bit controller
+- PA6H GPS module
+- Nokia5110 LCD display
 
 
 ## Software
