@@ -5,7 +5,7 @@
 
 1. [Introduction](#introduction)
 2. [Hardware](#hardware)
-3. [Software development](#software development)
+3. [Software](#software)
 4. [Commits](#commits)
 5. [References](#references)
 
