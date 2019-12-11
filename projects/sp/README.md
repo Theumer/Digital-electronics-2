@@ -5,7 +5,7 @@
 
 1. [Introduction](#introduction)
 2. [Hardware](#hardware)
-3. [Software](#software)
+3. [Software development](#software development)
 4. [Commits](#commits)
 5. [References](#references)
 
@@ -29,7 +29,7 @@ Authors:
 > We use ATmega2560 kit, because this controller provides four USARTs. To communication with PC we use USART0 (connect with USB port usbACK0) and to receive data from GPS we use USART1.
 
 
-## Software
+## Software development
 
 Creating application:  
 - [x] LCD Nokia5110 running (28th Nov)  
