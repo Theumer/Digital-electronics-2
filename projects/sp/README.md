@@ -52,6 +52,7 @@ Our algorithm work as state automat. First state "0" indetifies received sentenc
 [flowchart in vector](https://github.com/Theumer/Digital-electronics-2/blob/master/projects/sp/vyvojovy_diagram_de2.pdf)  
 [presentation]  
 [video](https://www.youtube.com/watch?v=nIREcNWi07I)  
+[video](https://www.youtube.com/watch?v=nIREcNWi07I)
   
 ## Commits
 
