@@ -35,7 +35,7 @@ Creating application:
 - [x] LCD Nokia5110 running (28th Nov)  
 - [x] USAT0 and USART1 communication with GPS module and PC running (5th Dec)  
 - [x] assignment receive data into arrays (11th Dec)
-- [ ] test of GPS outside
+- [x] test of GPS outside (17th Dec)
 
 
 ## Commits
@@ -45,6 +45,7 @@ Creating application:
 [GPS]   ... reading GPS data from PA6H  
 [TEST]  ... test application outside  
 [.MD]   ... edit of .md file  
+[NOTE]  ... edit of comments and notes
 
 
 ## References
