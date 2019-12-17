@@ -53,4 +53,5 @@ We use interrupt routine from timer1 - overflow. Prescaler of 8bit timer1 is set
 ## References
 
 1. Microchip, [AVR 8-bit Toolchain for Windows, Linux, Mac OS X](https://www.microchip.com/mplab/avr-support/avr-and-arm-toolchains-c-compilers)  
-2. Sergey Denisov, lib for UART, compatible with \taxtbf{ega2560}, 
+2. Sergey Denisov, online, [C library for control UART, AVR](https://github.com/LittleBuster/avr-uart/tree/master/mega328)  
+3. Datasheet PA6h GPS module, online, [available here](https://cdn-shop.adafruit.com/datasheets/GlobalTop-FGPMMOPA6H-Datasheet-V0A.pdf)
