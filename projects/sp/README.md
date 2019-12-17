@@ -48,7 +48,7 @@ GPS module PA6H send data continuously. After connect to supply, we must wait ab
 #### Flowchart   
 Our algorithm work as state automat. First state "0" indetifies received sentence. Succesfully identification leds to state "1". There is assigned data to corresponding row of 2D array.  
   
-<img src="https://github.com/Theumer/Digital-electronics-2/blob/master/projects/sp/flowchart.jpg" width="800">  
+<img src="https://github.com/Theumer/Digital-electronics-2/blob/master/projects/sp/flowchart.jpg" width="500">  
   
   
 ## Commits
