@@ -36,7 +36,10 @@ Creating application:
 - [x] USAT0 and USART1 communication with GPS module and PC running (5th Dec)  
 - [x] assignment receive data into arrays (11th Dec)
 - [x] test of GPS outside (17th Dec)
-
+  
+  
+![flowchart](https://github.com/Theumer/Digital-electronics-2/tree/master/docs/vyvojovy_diagram_de2.pdf)
+Format: ![Flowchart of algorithm](url)  
 
 ## Commits
 
