@@ -37,15 +37,19 @@ Creating application step-by-step:
 - [x] assignment receive data into arrays (11th Dec)
 - [x] test of GPS outside (17th Dec)
   
+  
 #### About devices  
 We use interrupt routine from timer1 - overflow. Prescaler of 8bit timer1 is set to 256 (about every 1 second). In this interrupt routine we refresh LCD display. At first, we create string from concrete to concrete index of corresponding row (of 2D array) with name of NMEA sentence. We create it with help of function "memcpy", which is contained in library string.h.  
 <img src="https://github.com/Theumer/Digital-electronics-2/blob/master/projects/sp/nmea_sent.png">  
   
 GPS module PA6H send data continuously. After connect to supply, we must wait about 35 seconds to finish internal init of GPS module. [3] Every 1 second module send four NMEA sentences: GPGGA, GPGSA, GPGSV and GPRMC. Every 5 second we receive one more sentence, which call GPVTG. We using data only from GPGGA and GPRMC sentences.  
   
+  
+#### Flowchart   
 Our algorithm work as state automat. First state "0" indetifies received sentence. Succesfully identification leds to state "1". There is assigned data to corresponding row of 2D array.  
 <img src="https://github.com/Theumer/Digital-electronics-2/blob/master/projects/sp/flowchart.jpg">  
-
+  
+  
 ## Commits
 
 [LCD]   ... programming LCD disp.  
