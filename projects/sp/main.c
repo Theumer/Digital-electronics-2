@@ -22,32 +22,33 @@
 #include <stdlib.h>                         // itoa() function
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#include <string.h>
 #include "timer.h"
 #include "uart.h"
 #include "twi.h"
 #include "nokia5110.h"
 #include "gpio.h"
 
-/* Define ------------------------------------------------------------*/
+// DEFINE ------------------------------------------------------------
 #define UART_BAUD_RATE 9600
 
-/* Variables ---------------------------------------------------------
-state_t current_state = IDLE_STATE;
-uint8_t temp;
-uint8_t time_sec;
-uint8_t time_min;*/
+// INIT OF GLOBAL VARIABLES
+volatile uint8_t    data[400] = {0};
+volatile uint8_t    identifier[6] = {0};
+volatile uint8_t    i = 0;
+uint16_t            baudrate = 9600;
 
-// INIT OF ARRAYS FOR 5 DATA PACKET FROM GPS
-volatile uint8_t data[400] = {0};
-volatile uint8_t GGA[100] = {0};
-volatile uint8_t GSA[100] = {0};
-volatile uint8_t GSV[100] = {0};
-volatile uint8_t RMC[100] = {0};
-volatile uint8_t VTG[100] = {0};
-volatile uint8_t identifier[6] = {0};
+volatile uint8_t    result;
+volatile uint8_t    j = 0;
+volatile uint8_t    state = 4;
 
-/* Function prototypes -----------------------------------------------*/
-/* void fsm_twi_scanner(void);*/
+char                receive;
+char                NMEA[5][100];                      //pole k ukládání dat z GPS
+char                indent[7];
+char                latitude[12];
+char                longitude[13];
+char                time[9];
+char                speed[6];
 
 /* Functions ---------------------------------------------------------*/
 /**
@@ -88,62 +89,94 @@ int main(void)
     TIM_config_prescaler(TIM1, TIM_PRESC_256);
     TIM_config_interrupt(TIM1, TIM_OVERFLOW_ENABLE);
 
-    // global enable of interrupt
+    // global eramenable of interrupt
     sei();
 
-    uint8_t i = 0;
-    uint8_t state = 0;
-    uint8_t receive;
     //char uart_string[4];
 
     // LOOP FOR CHECKING SET OF RXC1 BIT
     while(1){
         // doing, while UDR1 receive reg is full (set RXC1 flag)
         while (!(UCSR1A & (1<<RXC1)))
-        {
+        {   
+
             receive = uart1_getc();
             uart_putc(receive);
-            if(receive == 36)
+
+            if(receive == '$')
             {
                 i = 0;
-                state++;
+                state = 0;
+            }
+
+            if(i == 6)
+            {
+                state = 1;
+                indent[i] = '\0';
+                result = strcmp(indent, "$GPGGA");
+                if(result == 0){
+                    j = 0;
+                }
+
+                result = strcmp(indent, "$GPGSA");
+		        if(result == 0) j = 1;
+
+                result = strcmp(indent, "$GPGSV");
+		        if(result == 0) j = 2;
+
+                result = strcmp(indent, "$GPRMC");
+		        if(result == 0) j = 3;
+
+                result = strcmp(indent, "$GPVTG");
+		        if(result == 0) j = 4;
             }
 
             switch(state)
             {
-                case 1: GGA[i] = receive; i++; break;
-                case 2: GSA[i] = receive; i++; break;
-                case 3: GSV[i] = receive; i++; break;
-                case 4: RMC[i] = receive; i++; break;
-                case 5: VTG[i] = receive; i++; break;
+                case 0: indent[i] = receive; i++; break;
+                case 1: NMEA[j][i-6] = receive; i++; break;
                 default: break;
             }
         }
     }
-
     // infinite loop
-    for (;;) {
+   /* for (;;) {
     }
-    
-    return (0);
+    return (0);*/
 }
 
 /* INTERRUPT VECTOR FOR REFRESH OF DISPLAY */
+
+
 ISR(TIMER1_OVF_vect){
-    //uint8_t value = GGA[0];
-    //char uart_string[4];
+    memcpy(time, &NMEA[0][1], 6);
+    time[8] = '\0';
+    time[7] = time[5];
+    time[6] = time[4];
+    time[5] = ':';
+    time[4] = time[3];
+    time[3] = time[2];
+    time[2] = ':';
+
+    memcpy(latitude, &NMEA[0][12], 12);
+    latitude[11] = '\0';
+
+    memcpy(longitude, &NMEA[0][24], 13);
+    longitude[12] = '\0';
+
+    memcpy(speed, &NMEA[3][39], 4);
+    speed[5] = '\0';
 
     nokia_lcd_clear();
-    nokia_lcd_write_string("SPEED", 2);
+    nokia_lcd_write_string(speed, 2);
 
     nokia_lcd_set_cursor(0, 20);
-    nokia_lcd_write_string("latitude", 1);
+    nokia_lcd_write_string(latitude, 1);
 
     nokia_lcd_set_cursor(0, 30);
-    nokia_lcd_write_string("longitude", 1);
+    nokia_lcd_write_string(longitude, 1);
 
-    //itoa(value, uart_string, 10);
     nokia_lcd_set_cursor(0, 40);
-    nokia_lcd_write_char(GGA[0], 1);
-    nokia_lcd_render();
+    nokia_lcd_write_string(time, 1);
+    nokia_lcd_render(); 
 }
