@@ -38,9 +38,7 @@ Creating application:
 - [x] test of GPS outside (17th Dec)
   
 We use interrupt routine from timer1 - overflow. Prescaler of 8bit timer1 is set to 256 (about every 1 second). In this interrupt routine we refresh LCD display. At first, we create string from concrete to concrete index of corresponding row (of 2D array) with name of NMEA sentence. We create it with help of function "memcpy", which is contained in library string.h.  
-  
-![][image_ref_a32ff4ads]
-![NMEA sentences](https://github.com/Theumer/Digital-electronics-2/tree/master/docs/nmea_sent.png) 
+<img src="https://github.com/Theumer/Digital-electronics-2/tree/master/docs/nmea_sent.png">  
 
 ## Commits
 
