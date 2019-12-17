@@ -31,12 +31,13 @@ BUT Brno, FEEC
 
 ## Software development
 
-Creating application:  
+Creating application step-by-step:  
 - [x] LCD Nokia5110 running (28th Nov)  
 - [x] USAT0 and USART1 communication with GPS module and PC running (5th Dec)  
 - [x] assignment receive data into arrays (11th Dec)
 - [x] test of GPS outside (17th Dec)
   
+#### About devices  
 We use interrupt routine from timer1 - overflow. Prescaler of 8bit timer1 is set to 256 (about every 1 second). In this interrupt routine we refresh LCD display. At first, we create string from concrete to concrete index of corresponding row (of 2D array) with name of NMEA sentence. We create it with help of function "memcpy", which is contained in library string.h.  
 <img src="https://github.com/Theumer/Digital-electronics-2/blob/master/projects/sp/nmea_sent.png">  
   
