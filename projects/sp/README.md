@@ -49,9 +49,9 @@ GPS module PA6H send data continuously. After connect to supply, we must wait ab
 Our algorithm work as state automat. First state "0" indetifies received sentence. Succesfully identification leds to state "1". There is assigned data to corresponding row of 2D array.  
   
 <img src="https://github.com/Theumer/Digital-electronics-2/blob/master/projects/sp/flowchart.jpg" width="500">  
-1. flowchart in PDF [here](https://github.com/Theumer/Digital-electronics-2/blob/master/projects/sp/vyvojovy_diagram_de2.pdf)  
-2. PDF presentation [here](https://www.youtube.com/watch?v=nIREcNWi07I)  
-3. YouTube video [here](https://www.youtube.com/watch?v=nIREcNWi07I)  
+1. flowchart in PDF: https://github.com/Theumer/Digital-electronics-2/blob/master/projects/sp/vyvojovy_diagram_de2.pdf  
+2. PDF presentation: https://www.youtube.com/watch?v=nIREcNWi07I  
+3. YouTube video: https://www.youtube.com/watch?v=nIREcNWi07I   
   
 ## Commits
 
