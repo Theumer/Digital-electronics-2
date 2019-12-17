@@ -54,4 +54,5 @@ We use interrupt routine from timer1 - overflow. Prescaler of 8bit timer1 is set
 
 ## References
 
-1. Microchip, [AVR 8-bit Toolchain for Windows, Linux, Mac OS X](https://www.microchip.com/mplab/avr-support/avr-and-arm-toolchains-c-compilers)
+1. Microchip, [AVR 8-bit Toolchain for Windows, Linux, Mac OS X](https://www.microchip.com/mplab/avr-support/avr-and-arm-toolchains-c-compilers)  
+2. Sergey Denisov, lib for UART, compatible with \taxtbf{ega2560}, 
