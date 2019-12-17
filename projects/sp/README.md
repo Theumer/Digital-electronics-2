@@ -29,7 +29,7 @@ BUT Brno, FEEC
 > We use ATmega2560 kit, because this controller provides four USARTs. To communication with PC we use USART0 (connect with USB port usbACM0) and to receive data from GPS we use USART1.  
   
 Schematic of embedded device:  
-
+<img src="https://github.com/Theumer/Digital-electronics-2/blob/master/projects/sp/embedded_schema.png" width="500">  
 
 
 ## Software development
@@ -66,8 +66,13 @@ Our algorithm work as state automat. First state "0" indetifies received sentenc
 [NOTE]  ... edit of comments and notes
 
 
-## References
+## References and links
 
 1. Microchip, [AVR 8-bit Toolchain for Windows, Linux, Mac OS X](https://www.microchip.com/mplab/avr-support/avr-and-arm-toolchains-c-compilers)  
 2. Sergey Denisov, online, [C library for control UART, AVR](https://github.com/LittleBuster/avr-uart/tree/master/mega328)  
 3. Datasheet PA6h GPS module, online, [available here](https://cdn-shop.adafruit.com/datasheets/GlobalTop-FGPMMOPA6H-Datasheet-V0A.pdf)
+4. Datasheet Nokia5110 LCD display, online, [available here](https://www.sparkfun.com/datasheets/LCD/Monochrome/Nokia5110.pdf)  
+  
+PDF [presentation](https://github.com/Theumer/Digital-electronics-2/blob/master/projects/sp/GPS_Semestral_project.pdf)  
+YouTube [video](https://www.youtube.com/watch?v=nIREcNWi07I)  
+Flowchart in [vector](https://github.com/Theumer/Digital-electronics-2/blob/master/projects/sp/vyvojovy_diagram_de2.pdf)
