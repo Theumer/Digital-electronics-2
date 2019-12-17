@@ -14,10 +14,10 @@
 
 ***Semestral project in BPC-DE2: Communication with GPS module***  
   
-Authors:  
- - Radek Theumer  
- - Jindrich Zabka  
- - Jonas Hubacek
+Authors: Radek Theumer, Jindrich Zabka, Jonas Hubacek  
+  
+Department of radioelectronics  
+BUT Brno, FEEC
 
 
 ## Hardware
